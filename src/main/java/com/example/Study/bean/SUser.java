@@ -9,12 +9,14 @@ package com.example.Study.bean;
 
 public class SUser {
 	private int id;
+	private String realName;
 	private String name;
 	private String password;
 
 	public SUser(SUser sUser) {
 		this.id = sUser.getId();
 		this.name = sUser.getName();
+		this.realName= sUser.getRealName();
 		this.password = sUser.getPassword();
 	}
 
@@ -22,6 +24,7 @@ public class SUser {
 	public String toString() {
 		return "SUser{" +
 				"id=" + id +
+				", realName='" + realName + '\'' +
 				", name='" + name + '\'' +
 				", password='" + password + '\'' +
 				'}';
@@ -30,8 +33,10 @@ public class SUser {
 	public SUser() {
 	}
 
-	public SUser(int id, String name, String password) {
+
+	public SUser(int id, String realName, String name, String password) {
 		this.id = id;
+		this.realName = realName;
 		this.name = name;
 		this.password = password;
 	}
@@ -58,5 +63,12 @@ public class SUser {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+	public String getRealName() {
+		return realName;
+	}
+
+	public void setRealName(String realName) {
+		this.realName = realName;
 	}
 }

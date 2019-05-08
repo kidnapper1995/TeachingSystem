@@ -1,0 +1,79 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta content="text/html;charset=UTF-8"/>
+    <title>注册</title>
+    <link rel="stylesheet" th:href="@{css/bootstrap.css}"/>
+    <style type="text/css">
+body { padding: 20px; }
+.starter-template { width:350px; padding: 0 40px; text-align: center; }
+</style>
+</head>
+<body class="container">
+<hr/>
+<div class="starter-template">
+    <h2>用户注册</h2>
+    <form name="form" th:action="@{/register/user}" onsubmit="return isNull();" method="POST"> <!-- 3 -->
+        <div class="form-group">
+            <label for="userName">用户名</label>
+            <input type="text" class="form-control" name="userName" id="userName" value="" placeholder="手机号" />
+
+        </div>
+        <div class="form-group">
+            <label for="realName">真实姓名</label>
+            <input type="text" class="form-control" name="realName" id="realName" value="" placeholder="邮箱" />
+
+        </div>
+        <div class="form-group">
+            <label for="password">密码</label>
+            <input type="password" class="form-control" id="password" name="password"  placeholder="密码" />
+        </div>
+        <div class="form-group">
+            <input type="submit" id="login" value="注册" class="btn btn-primary" />
+        </div>
+
+        <script type="text/javascript">
+    function isNull1(){
+     var str = document.getElementById("userName").value.replace(/(^\s*)|(\s*$)/g, '');//去除空格;
+    if(str == '' || str == undefined || str == null)
+        {alert("用户名内容不能为空！请重新输入");
+        return false;}
+       else
+       return true;
+       }
+
+       function isNull2(){
+     var str = document.getElementById("realName").value.replace(/(^\s*)|(\s*$)/g, '');//去除空格;
+    if(str == '' || str == undefined || str == null)
+        {alert("真实姓名内容不能为空！请重新输入");
+        return false;}
+       else
+       return true;
+       }
+
+       function isNull3(){
+     var str = document.getElementById("password").value.replace(/(^\s*)|(\s*$)/g, '');//去除空格;
+    if(str == '' || str == undefined || str == null)
+        {alert("密码内容不能为空！请重新输入");
+        return false;}
+       else
+       return true;
+       }
+
+       function isNull(){
+       if(isNull2()&&isNull1()&&isNull3())
+         return true;
+         else
+         return false;
+         }
+
+</script>
+
+    </form>
+
+</div>
+<a th:href="@{/login}" class="btn btn-info">返回登陆界面</a>
+
+</body>
+</html>

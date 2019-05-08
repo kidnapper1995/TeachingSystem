@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>grade</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.css}"></link>
+</head>
+<body class="container">
+<br/>
+<h1>学生成绩信息</h1>
+<br/>
+<br/>学生学号：<span th:text="${grade.getStudentId()}"></span>
+<br/>学生姓名：<span th:text="${grade.getStudentName()}"></span>
+<br/>考试日期：<span th:text="${grade.getDate()}"></span>
+
+<div class="with:80%">
+    <form class="form-horizontal"   th:action="@{/admin/finishEdit}"   method="post">
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th>语法</th>
+            <th>发音</th>
+            <th>词汇</th>
+            <th>写作</th>
+            <th>听力</th>
+            <th>阅读</th>
+            <th>口语</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr  th:each="grade : ${grade}">
+            <td th:text="${grade.getGrammar()}">1</td>
+            <td th:text="${grade.getPronunciation()}">1</td>
+            <td th:text="${grade.getVocabulary()}">1</td>
+            <td th:text="${grade.getWritting()}">1</td>
+            <td th:text="${grade.getListening()}">1</td>
+            <td th:text="${grade.getReading()}">1</td>
+            <td th:text="${grade.getSpeaking()}">1</td>
+        </tr>
+
+        <tr>
+            <td><input type="text" class="form-control" name="newGrammar"  id="newGrammar"  th:value="${grade.getGrammar()}"/></td>
+            <td><input type="text" class="form-control" name="newPronunciation"  id="newPronunciation" th:value="${grade.getPronunciation()}" /></td>
+            <td><input type="text" class="form-control" name="newVocabulary"  id="newVocabulary" th:value="${grade.getVocabulary()}" /></td>
+            <td><input type="text" class="form-control" name="newWritting"  id="newWritting" th:value="${grade.getWritting()}" /></td>
+            <td><input type="text" class="form-control" name="newListening"  id="newListening" th:value="${grade.getListening()}" /></td>
+            <td><input type="text" class="form-control" name="newReading"  id="newReading" th:value="${grade.getReading()}"  /></td>
+            <td><input type="text" class="form-control" name="newSpeaking"  id="newSpeaking" th:value="${grade.getSpeaking()}" /></td>
+            <input type="hidden" name="id" th:value="${grade.getId()}" />
+        </tr>
+        </tbody>
+    </table>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <input type="submit" value="Submit" class="btn btn-info" />
+            </div>
+
+        </div>
+    </form>
+</div>
+<div class="form-group">
+    <div class="col-sm-2 control-label">
+        <a th:href="@{/index}" class="btn btn-info">返回首页</a>
+    </div>
+</div>
+
+</body>
+</html>
