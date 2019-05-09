@@ -13,7 +13,7 @@ body { padding: 40px; }
 <h1>导航页</h1>
 <br/>你好：<a sec:authentication="name"></a>
 <p>
-    <a sec:authorize="hasAuthority('P_USER')" th:href="@{/user/check}"> 查看擅长项目</a>
+    <a sec:authorize="hasAuthority('P_USER')" th:href="@{/user/toCheck}"> 查看擅长项目</a>
     <a sec:authorize="hasAuthority('P_ADMIN')" th:href="@{/admin/add}"> 添加学生成绩</a>
     <a sec:authorize="hasAuthority('P_ADMIN')" th:href="@{/admin/edit}"> |查看或修改学生成绩</a>
     <a sec:authorize="hasAuthority('P_ADMIN')" th:href="@{/admin/check}"> |查看学生擅长项目</a>

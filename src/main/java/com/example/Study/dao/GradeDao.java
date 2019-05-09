@@ -22,6 +22,9 @@ public interface GradeDao {
     @Select(value = " SELECT su.* FROM english su ")
     public List<Grade> findAllGrade();
 
+    @Select(value = "select * from english where date=#{date}")
+    public List<Grade> findGradeByDate(String date);
+
     @Insert(value = "INSERT english (studentId,studentName,grammar,pronunciation," +
             "vocabulary,writting,listening,reading,speaking,date) VALUES (#{studentId}," +
             "#{studentName},#{grammar},#{pronunciation},#{vocabulary}," +

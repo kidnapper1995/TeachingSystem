@@ -8,6 +8,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.Map;
+
 @Controller
 @RequestMapping("/admin")
 public class TeacherController {
@@ -16,8 +20,32 @@ public class TeacherController {
 
 
     @RequestMapping("/check")
-    public String check(){
-        return "";
+    public String check(Model model){
+        model.addAttribute("users",gradeService.findAllUser());
+        return "/admin/check";
+    }
+
+
+    @RequestMapping("/toCheck")
+    public String check(Model model,int id){
+        ArrayList<Map.Entry<Integer, Integer>> list=gradeService.compareSubjects(id);
+        String[] subjects={"grammar","pronunciation","vocabulary","writting","listening","reading","speaking"};
+        if (list==null){
+            model.addAttribute("realName",gradeService.findSUserById(id).getRealName());
+            model.addAttribute("weak",null);
+            model.addAttribute("good",null);
+        }
+        else {
+            model.addAttribute("realName",gradeService.findSUserById(id).getRealName());
+            model.addAttribute("weak",subjects[list.get(0).getKey()]);
+            model.addAttribute("good",subjects[list.get(6).getKey()]);
+        }
+
+        model.addAttribute("last",gradeService.compareWithOthers(id));
+        model.addAttribute("previous",gradeService.compareWithOthersPrevious(id));
+        model.addAttribute("compareP",gradeService.compareWithPrevious(id));
+
+        return "admin/showCheck";
     }
 
     @RequestMapping("/add")

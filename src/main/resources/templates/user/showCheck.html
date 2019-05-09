@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>grade</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.css}"></link>
+
+</head>
+<body class="container">
+<br/>
+<h1>学生成绩信息</h1>
+<br/><br/>
+<div class="with:80%">
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th>姓名</th>
+            <th>弱势项目</th>
+            <th>优势项目</th>
+            <th>最近一次考试成绩</th>
+            <th>历史成绩</th>
+            <th>成绩变化趋势</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td th:text="${realName}">1</td>
+            <td th:text="${weak}">1</td>
+            <td th:text="${good}">1</td>
+            <td th:text="${last}">1</td>
+            <td th:text="${previous}">1</td>
+            <td th:text="${compareP}">1</td>
+        </tr>
+        </tbody>
+    </table>
+
+    <div class="with:80%" >
+
+        <table class="table table-hover" >
+            <thead>
+
+
+            </thead>
+
+            <tbody>
+            <tr>
+                <td rowspan="1" style=" text-align:right;"  width="35%" th:text="'姓名：'+${realName}">1</td>
+                <td rowspan="3" style=""  width="30%"><img src="../img/timg.jpg" style="
+    width: 200px;
+    height: 200px;
+"></td>
+                <td rowspan="1" style=" text-align:left;"  width="35%" th:text="'弱势项目：'+${weak}">1</td>
+            </tr>
+            <tr>
+                <td rowspan="1" style=" text-align:right;"  width="35%" th:text="'优势项目：'+${good}">1</td>
+                <td rowspan="1" style=" text-align:left;"  width="35%" th:text="'最近一次考试成绩：'+${last}">1</td>
+            </tr>
+            <tr>
+                <td rowspan="1" style=" text-align:right;"  width="35%" th:text="'历史成绩：'+${previous}">1</td>
+                <td rowspan="1" style=" text-align:left;"  width="35%" th:text="'成绩变化趋势：'+${compareP}">1</td>
+            </tr>
+
+
+
+            </tbody>
+        </table>
+    </div>
+
+
+
+
+
+    <div class="form-group">
+        <div class="col-sm-2 control-label">
+            <a th:href="@{/index}" class="btn btn-info">返回首页</a>
+        </div>
+    </div>
+</div>
+</body>
+
+
+
+
+</html>
